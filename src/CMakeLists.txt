@@ -7,6 +7,8 @@ if(USE_SPEECHPLAYER)
 endif()
 add_subdirectory(libespeak-ng)
 
+install(DIRECTORY include/espeak include/espeak-ng TYPE INCLUDE)
+
 if(BUILD_ESPEAK_NG_EXE)
   add_executable(espeak-ng-bin espeak-ng.c)
   target_link_libraries(
@@ -29,7 +31,6 @@ if(BUILD_ESPEAK_NG_EXE)
     )
   endif()
   install(TARGETS espeak-ng-bin)
-  install(DIRECTORY include/espeak include/espeak-ng TYPE INCLUDE)
 
   if (ESPEAK_COMPAT AND NOT WIN32)
     install(FILES ${CMAKE_CURRENT_BINARY_DIR}/speak-ng DESTINATION bin)

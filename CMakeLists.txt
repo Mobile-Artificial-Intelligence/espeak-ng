@@ -6,26 +6,13 @@ project(espeak-ng
   HOMEPAGE_URL "https://github.com/espeak-ng/espeak-ng"
 )
 
-option(BUILD_ESPEAK_NG_EXE "Whether to build espeak-ng-bin" ON)
-option(BUILD_ESPEAK_NG_TESTS "Whether to build tests" ON)
-
-include(CTest)
-
 include(cmake/deps.cmake)
 include(cmake/config.cmake)
 add_subdirectory(src)
-if(BUILD_ESPEAK_NG_EXE)
-  include(cmake/data.cmake)
-endif()
 include(cmake/docs.cmake)
 
 include(cmake/package.cmake)
 include(CPack)
-
-if(BUILD_ESPEAK_NG_TESTS)
-  include(CTest)
-  add_subdirectory(tests)
-endif()
 
 option(BUILD_SHARED_LIBS "Build shared libraries" OFF)
 
@@ -37,6 +24,10 @@ message(STATUS "  libpcaudio: ${USE_LIBPCAUDIO} (${PCAUDIO_LIB} ${PCAUDIO_INC})"
 message(STATUS "  klatt: ${USE_KLATT}")
 message(STATUS "  speech-player: ${USE_SPEECHPLAYER}")
 message(STATUS "  async: ${USE_ASYNC}")
+
+install(
+  DIRECTORY espeak-ng-data DESTINATION espeak-ng-data
+)
 
 install(
   DIRECTORY vim/ftdetect vim/syntax DESTINATION share/vim/vimfiles
