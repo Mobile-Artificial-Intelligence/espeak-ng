@@ -1,4 +1,4 @@
-add_library(ucd
+add_library(ucd STATIC
   src/case.c
   src/categories.c
   src/ctype.c
@@ -7,5 +7,3 @@ add_library(ucd
   src/tostring.c
 )
 target_include_directories(ucd PUBLIC src/include)
-
-install(TARGETS ucd)
