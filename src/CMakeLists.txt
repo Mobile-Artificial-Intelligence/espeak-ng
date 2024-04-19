@@ -1,6 +1,8 @@
 add_library(espeak-include INTERFACE)
 target_include_directories(espeak-include INTERFACE include include/compat)
 
+install(DIRECTORY include/espeak include/espeak-ng TYPE INCLUDE)
+
 add_subdirectory(ucd-tools)
 add_subdirectory(libespeak-ng)
 
